@@ -9,36 +9,45 @@
   <title>ベルツリー出退勤</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
+
+  <script>
+    (function () {
+      const isApp =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true;
+
+      if (isApp) {
+        window.location.replace(
+          "https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
+        );
+      }
+    })();
+  </script>
+
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
       font-family: sans-serif;
       background: #f3f6f2;
       color: #34443a;
-      display: flex;
-      flex-direction: column;
+      text-align: center;
     }
     header {
       background: #527b61;
       color: white;
-      text-align: center;
       padding: 22px 12px;
     }
     main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      padding: 35px 18px;
     }
     .card {
-      width: 100%;
       max-width: 480px;
+      margin: 20px auto;
+      padding: 28px 20px;
       background: white;
       border-radius: 18px;
-      padding: 28px 20px;
-      text-align: center;
       box-shadow: 0 3px 14px #00000012;
     }
     .bell { font-size: 50px; }
@@ -65,7 +74,7 @@
       <div class="bell">🔔</div>
       <p>職員の皆さまはこちらから出退勤を打刻してください。</p>
       <a class="open-link"
-        href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec">
+         href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec">
         出退勤画面を開く
       </a>
     </section>
@@ -74,16 +83,6 @@
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("./sw.js").catch(function(){});
-    }
-
-    const launchedAsApp =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      window.navigator.standalone === true;
-
-    if (launchedAsApp) {
-      window.location.replace(
-        "https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
-      );
     }
   </script>
 </body>
