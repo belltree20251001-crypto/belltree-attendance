@@ -6,111 +6,68 @@
   <meta name="theme-color" content="#527b61">
   <meta name="description" content="ベルツリーケアプランセンター 出退勤アプリ">
   <title>ベルツリー出退勤</title>
-  <link rel="manifest" href="manifest.json">
-
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon-192.png">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f3f6f2;
-      color: #34443a;
+      margin: 0; min-height: 100vh; font-family: sans-serif;
+      background: #f3f6f2; color: #34443a;
+      display: flex; flex-direction: column;
     }
-
     header {
-      background: #527b61;
-      color: white;
-      text-align: center;
-      padding: 18px 10px;
+      background: #527b61; color: white; text-align: center;
+      padding: 22px 12px;
     }
-
-    header h1 {
-      font-size: 22px;
-      margin: 0;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 12px;
-    }
-
+    header h1 { font-size: 22px; margin: 0; letter-spacing: 1px; }
+    header p { margin: 7px 0 0; font-size: 12px; }
     main {
-      max-width: 650px;
-      margin: 18px auto;
-      padding: 0 12px;
+      width: 100%; max-width: 560px; margin: auto;
+      padding: 28px 18px; flex: 1; display: flex;
+      align-items: center; justify-content: center;
     }
-
     .app-card {
-      background: white;
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: 0 3px 12px #00000012;
+      width: 100%; background: white; border-radius: 18px;
+      padding: 28px 20px; text-align: center;
+      box-shadow: 0 3px 14px #00000012;
     }
-
-    .notice {
-      text-align: center;
-      font-size: 13px;
-      color: #65756a;
-      margin: 12px 0;
-    }
-
-    iframe {
-      width: 100%;
-      height: 760px;
-      border: 0;
-      border-radius: 10px;
-      background: white;
-    }
-
+    .bell { font-size: 54px; margin-bottom: 10px; }
+    .notice { font-size: 14px; line-height: 1.8; color: #65756a; margin: 0 0 22px; }
     .open-link {
-      display: block;
-      text-align: center;
-      margin: 14px 0;
-      color: #527b61;
-      font-size: 14px;
+      display: block; width: 100%; padding: 17px 12px;
+      background: #527b61; color: white; border-radius: 12px;
+      text-decoration: none; font-size: 18px; font-weight: bold;
     }
-
-    footer {
-      text-align: center;
-      color: #89958c;
-      font-size: 11px;
-      padding: 15px;
-    }
+    .open-link:active { opacity: .85; }
+    .sub { font-size: 12px; color: #89958c; margin: 16px 0 0; line-height: 1.7; }
+    footer { text-align: center; color: #89958c; font-size: 11px; padding: 16px; }
   </style>
 </head>
-
 <body>
   <header>
     <h1>ベルツリー出退勤</h1>
     <p>ベルツリーケアプランセンター</p>
   </header>
-
   <main>
-    <div class="app-card">
-      <p class="notice">
-        職員の皆さまはこちらから出退勤を打刻してください。
-      </p>
-
-      <iframe
-        src="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
-        title="ベルツリー出退勤システム"
-        allow="clipboard-read; clipboard-write">
-      </iframe>
-
+    <section class="app-card">
+      <div class="bell" aria-hidden="true">🔔</div>
+      <p class="notice">職員の皆さまはこちらから出退勤を打刻してください。</p>
       <a class="open-link"
-         href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
-         target="_blank">
-        画面が表示されない場合はこちら
+         href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec">
+        出退勤画面を開く
       </a>
-    </div>
+      <p class="sub">ボタンを押すと、出勤・退勤の打刻画面が開きます。<br>管理者用の修正機能も、これまでどおり利用できます。</p>
+    </section>
   </main>
-
-  <footer>
-    © ベルツリーケアプランセンター
-  </footer>
+  <footer>© ベルツリーケアプランセンター</footer>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./sw.js").catch(function (error) {
+          console.log("Service Worker registration failed:", error);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
