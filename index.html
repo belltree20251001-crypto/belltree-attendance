@@ -5,17 +5,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#527b61">
+  <meta name="description" content="ベルツリーケアプランセンター 出退勤アプリ">
   <title>ベルツリー出退勤</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: #f3f6f2;
+      color: #34443a;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #527b61;
+      color: white;
+      text-align: center;
+      padding: 22px 12px;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 3px 14px #00000012;
+    }
+    .bell { font-size: 50px; }
+    .open-link {
+      display: block;
+      padding: 17px 12px;
+      background: #527b61;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body style="font-family:sans-serif;text-align:center;padding:40px 15px;color:#527b61;">
-  <h2>ベルツリー出退勤</h2>
-  <p>ベルツリーケアプランセンター</p>
-  <p>職員の皆さまはこちらから打刻してください。</p>
-  <a href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
-     style="display:block;background:#527b61;color:white;padding:18px;border-radius:12px;text-decoration:none;font-weight:bold;">
-    出退勤画面を開く
-  </a>
+<body>
+  <header>
+    <h2>ベルツリー出退勤</h2>
+    <p>ベルツリーケアプランセンター</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="bell">🔔</div>
+      <p>職員の皆さまはこちらから出退勤を打刻してください。</p>
+      <a class="open-link"
+        href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec">
+        出退勤画面を開く
+      </a>
+    </section>
+  </main>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch(function(){});
+    }
+
+    const launchedAsApp =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+
+    if (launchedAsApp) {
+      window.location.replace(
+        "https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
+      );
+    }
+  </script>
 </body>
 </html>
