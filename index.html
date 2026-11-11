@@ -5,24 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#527b61">
-  <meta name="description" content="ベルツリーケアプランセンター 出退勤アプリ">
   <title>ベルツリー出退勤</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
 </head>
-<body>
-  <p style="text-align:center;color:#527b61;font-family:sans-serif;">
-    ベルツリー出退勤を開いています…
-  </p>
-
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js").catch(function(){});
-    }
-
-    window.location.replace(
-      "https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
-    );
-  </script>
+<body style="font-family:sans-serif;text-align:center;padding:40px 15px;color:#527b61;">
+  <h2>ベルツリー出退勤</h2>
+  <p>ベルツリーケアプランセンター</p>
+  <p>職員の皆さまはこちらから打刻してください。</p>
+  <a href="https://script.google.com/macros/s/AKfycbw60SlTDSWuDgO3gRHZx9f7Mby5XD73pnEQx4ZdvWtR-iUTnL_8GNVuDQ6qKp_S1UQ/exec"
+     style="display:block;background:#527b61;color:white;padding:18px;border-radius:12px;text-decoration:none;font-weight:bold;">
+    出退勤画面を開く
+  </a>
 </body>
 </html>
